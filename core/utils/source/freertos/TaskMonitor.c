@@ -27,6 +27,11 @@
  * @file
  **/
 
+/*
+It seems infeasible to send arguments to TaskMonitor_Update() from traceTASK_SWITCHED_OUT() which is called from both Interrupt and non-interrupt contexts. xTaskGetCurrentTaskHandle() can instead be called to get taskTCB info. 
+Also, calling the monitoring function from the idle task which is ideally the lowest priority task may not give accurate and current monitoring information. 
+*/
+
 /* Module includes */
 #include "Kiso_Utils.h"
 #undef KISO_MODULE_ID
